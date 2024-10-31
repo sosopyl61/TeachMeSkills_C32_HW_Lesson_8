@@ -15,10 +15,11 @@ public class MasterCardTransferService implements CardTransferService {
         if (cardFrom.checkCardLimitTransfer(transferAmount)) {
             cardFrom.amount -= transferAmount;
             cardTo.amount += transferAmount;
+            return new Check(cardFrom.cardNumber, new Date(), transferAmount, "Transfer successful.");
         }
-        else
-            System.out.println("Your transfer amount exceeds the max allowed amount!");
-        return new Check(cardFrom.cardNumber, new Date(), transferAmount);
+        else {
+            return new Check(cardFrom.cardNumber, new Date(), transferAmount, "Transfer failed, limit exceeded.");
+        }
     }
 
     @Override
@@ -26,9 +27,10 @@ public class MasterCardTransferService implements CardTransferService {
         if (cardFrom.checkCardLimitTransfer(transferAmount)) {
             cardFrom.amount -= transferAmount;
             accountTo.amount += transferAmount;
+            return new Check(cardFrom.cardNumber, new Date(), transferAmount, "Transfer successful.");
         }
-        else
-            System.out.println("Your transfer amount exceeds the max allowed amount!");
-        return new Check(cardFrom.cardNumber, new Date(), transferAmount);
+        else {
+            return new Check(cardFrom.cardNumber, new Date(), transferAmount, "Transfer failed, limit exceeded.");
+        }
     }
 }

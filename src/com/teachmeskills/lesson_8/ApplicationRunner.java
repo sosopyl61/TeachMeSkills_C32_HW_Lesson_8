@@ -59,7 +59,7 @@ public class ApplicationRunner {
         masterCard1.showBaseInfo();
         masterCard2.showBaseInfo();
         MasterCardTransferService  masterCardTransferService = new MasterCardTransferService();
-        Check check1 = masterCardTransferService.transferFromCardToCard(masterCard1, masterCard2, 456);
+        Check check1 = masterCardTransferService.transferFromCardToCard(masterCard1, masterCard2, 501);
         check1.showCheckInfo();
         masterCard1.showBaseInfo();
         masterCard2.showBaseInfo();
